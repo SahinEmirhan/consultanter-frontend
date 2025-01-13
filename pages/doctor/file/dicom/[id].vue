@@ -1,0 +1,482 @@
+<template style="background-color:#000000;" onmousewheel="/*return false;*/">
+  <header class="page-header" id="page-header">
+    <span id="icon-list">
+      <span id="openFile_span"><img class="img" type="file" alt="Open File" altzhtw="開啟檔案" id="openFile"
+          src="/image/icon/black/openfile.png" width="50" height="50"></span>
+      <span id="MouseOperation_span"><img class="img VR MPR SEG" alt="Move & Zoom" altzhtw="平移與縮放" id="MouseOperation"
+          src="/image/icon/black/b_Pan.png" width="50" height="50"></span>
+      <span id="b_Scroll_span"><img class="img MPR" alt="Scroll" altzhtw="捲動" id="b_Scroll"
+          src="/image/icon/black/b_Scroll.png" width="50" height="50"></span>
+
+      <span id="SplitParent">
+        <img class="img" alt="Split Screen" altzhtw="分隔" id="SplitWindow"
+          src="/image/icon/black/b_LayoutWithinViewport.png" width="50" height="50">
+        <div id="openSplitWindowDiv" class="drawer" style="position:absolute;left: 0;white-space:nowrap;z-index: 100;
+              width: 500; display: none;"></div>
+      </span>
+      <span id="TransformationsImgParent">
+        <img class="img" id="openTransformationsImg" altzhtw="Transformations" alt="Transformations"
+          src="/image/icon/black/b_Transformations.png" width="50" height="50">
+        <div id="openTransformationsDiv" class="drawer" style="position:absolute;left: 0;white-space:nowrap;z-index: 100;
+          width: 500; display: none;background-color: black;">
+          <span id="horizontal_flip_span"><img alt="Horizontal Flip" class="innerimg" loading="lazy" altzhtw="水平翻轉"
+              id="horizontal_flip" src="/image/icon/black/b_FlipHorizontally.png" width="50" height="50"></span>
+          <span id="vertical_flip_span"><img altzhtw="垂直翻轉" class="innerimg" loading="lazy" alt="Vertical Flip"
+              id="vertical_flip" src="/image/icon/black/b_FlipVertically.png" width="50" height="50"></span>
+          <span id="MouseRotate_span"><img class="innerimg" loading="lazy" alt="rotate" altzhtw="旋轉" id="MouseRotate"
+              src="/image/icon/black/b_Rotate 90 degrees clockwise.png" width="50" height="50"></span>
+          <br>
+          <span id="rotate0_span"><img class="innerimg" loading="lazy" altzhtw="旋轉0度" alt="rotate 0" id="Rotate_0"
+              src="/image/icon/black/b_Rotate_0.png" width="50" height="50"></span>
+          <span id="rotatei90_span"><img class="innerimg" loading="lazy" altzhtw="旋轉-90度" alt="rotate 90"
+              id="Rotate_i90" src="/image/icon/black/b_Rotate_90.png" width="50" height="50"></span>
+          <span id="rotate90_span"><img class="innerimg filpx"  loading="lazy" altzhtw="旋轉90度" alt="rotate 90" id="Rotate_90"
+              src="/image/icon/black/b_Rotate_i90.png" width="50" height="50"></span>
+
+          <!--<span id="rotate180_span"><img altzhtw="旋轉180度" alt="rotate 180" id="Rotate_180"
+              src="/image/icon/black/b_Rotate_180.png" width="50" height="50"></span>
+          <span id="rotate270_span"><img altzhtw="旋轉270度" alt="rotate 270" id="Rotate_90"
+              src="/image/icon/black/b_Rotate_270.png" width="50" height="50"></span>-->
+        </div>
+      </span>
+      <span id="WindowRevisionParent">
+        <span id="WindowRevision_span"><img class="cropimg VR MPR SEG" alt="Window Level" altzhtw="Window Level"
+            id="WindowRevision" src="/image/icon/black/b_Window_Presets_left.png" width="38" height="50"></span>
+        <span id="WindowRevisionOption_span">
+          <img class="cropimg VR MPR SEG" alt="Window Level" altzhtw="Window Level" id="WindowRevisionOption"
+            src="/image/icon/black/b_Window_Presets_right.png" width="12" height="50"></span>
+        <div id="openWindowRevisionDiv" class="drawer" style="position:absolute;left: 0;white-space:nowrap;z-index: 100;
+              width: 500; display: none;">
+          <div class="WindowSelect" id="WindowDefault">Default</div>
+          <div class="WindowSelect" id="WindowCustom">Custom</div>
+          <div class="WindowSelect" id="WindowAbdomen" wc="60" ww="400">Abdomen(60,400)</div>
+          <div class="WindowSelect" id="WindowAngio" wc="300" ww="600">Angio(300,600)</div>
+          <div class="WindowSelect" id="WindowBone" wc="300" ww="1500">Bone(300,1500)</div>
+          <div class="WindowSelect" id="WindowBrain" wc="40" ww="80">Brain(40,80)</div>
+          <div class="WindowSelect" id="WindowChest" wc="40" ww="400">Chest(40,400)</div>
+          <div class="WindowSelect" id="WindowLungs" wc="-400" ww="1500">Lungs(-400,1500)</div>
+        </div>
+      </span>
+      <span id="zoom_span"><img class="img" altzhtw="放大鏡" alt="Zoom" id="zoom" src="/image/icon/black/b_Zoom.png"
+          width="50" height="50"></span>
+
+      <span id="color_invert_span"><img class="img" altzhtw="色彩反轉" alt="Color Invert" id="color_invert"
+          src="/image/icon/black/b_InvertGrayscale.png" width="50" height="50"></span>
+      <span id="unlink_span"><img class="img" altzhtw="同步操作" alt="Synchronous Operation" id="unlink"
+          src="/image/icon/black/b_unlink translation synchronization.png" width="50" height="50"></span>
+      <span id="reset_span"><img class="img" altzhtw="恢復原狀" alt="Restore Img" id="resetImg"
+          src="/image/icon/black/b_DisplayReset.png" width="50" height="50"></span>
+      <span id="MeasureImgParent">
+        <img class="img" id="openMeasureImg" altzhtw="測量" alt="Measure" src="/image/icon/black/M.png" width="50"
+          height="50">
+        <div id="openMeasureDIv" class="drawer" style="position:absolute;left: 0;white-space:nowrap;z-index: 100;
+        width: 500; display: none;background-color: black;">
+          <span id="removeRuler_span">
+            <img alt="remove" altzhtw="清除測量" class="innerimg" loading="lazy" id="removeRuler"
+              src="/image/icon/black/X.png" width="50" height="50">
+          </span>
+          <span id="eraseRuler_span">
+            <img alt="eraser" altzhtw="橡皮擦" class="innerimg" loading="lazy" id="eraseRuler"
+              src="/image/icon/black/b_Eraser.png" width="50" height="50">
+          </span>
+          <span id="MeasureRuler_span">
+            <img alt="measure" altzhtw="測量" class="innerimg" loading="lazy" id="MeasureRuler"
+              src="/image/icon/black/b_DistanceMeasurement.png" width="50" height="50">
+          </span>
+          <span id="AngleRuler_span">
+            <img alt="angle" altzhtw="角度" class="innerimg" loading="lazy" id="AngleRuler"
+              src="/image/icon/black/b_AngleMeasurement.png" width="50" height="50">
+          </span>
+          <br>
+          <span id="AngleRuler_span2">
+            <img alt="angle" altzhtw="角度" class="innerimg" loading="lazy" id="AngleRuler2"
+              src="/image/icon/black/b_AngleMeasurement2.png" width="50" height="50">
+          </span>
+          <span id="RectRuler_span">
+            <img alt="Rect shape" altzhtw="矩形" class="innerimg" loading="lazy" id="RectRuler"
+              src="/image/icon/black/b_RectMeasurement.png" width="50" height="50">
+          </span>
+          <span id="CircleRuler_span">
+            <img alt="Circle shape" altzhtw="圓形" class="innerimg" loading="lazy" id="CircleRuler"
+              src="/image/icon/black/b_CircleMeasurement.png" width="50" height="50">
+          </span>
+          <span id="IrregularRuler_span">
+            <img alt="irregular shape" altzhtw="不規則形狀" class="innerimg" loading="lazy" id="IrregularRuler"
+              src="/image/icon/black/irregular.png" width="50" height="50">
+          </span>
+          <br>
+          <span id="arrowRuler_span">
+            <img alt="arrow" altzhtw="箭頭" class="innerimg" loading="lazy" id="ArrowRuler"
+              src="/image/icon/black/b_arrow.png" width="50" height="50">
+          </span>
+          <span id="TextAnnotation_span">
+            <img alt="text annotation" altzhtw="文字註解" class="innerimg" loading="lazy" id="TextAnnotation"
+              src="/image/icon/black/T.png" width="50" height="50">
+          </span>
+        </div>
+      </span>
+
+      <span id="playvideo_span"><img class="img" loading="lazy" altzhtw="播放" alt="Cine" id="playvideo"
+          src="/image/icon/black/b_CinePlay.png" width="50" height="50"></span>
+      <span id="MarkButton_span"><img class="img VR MPR" loading="lazy" altzhtw="標記" alt="Display Mark" id="MarkButton"
+          src="/image/icon/black/fist0.png" width="50" height="50"></span>
+      <span id="annotation_span"><img class="img" loading="lazy" alt="Annotation" id="annotation"
+          src="/image/icon/black/b_Annotation.png" width="50" height="50"></span>
+      <span id="MarkupImg_span"><img class="img VR MPR RTSS" loading="lazy" alt="Markup & Annotation" id="MarkupImg"
+          src="/image/icon/black/b_ShowReport.png" width="50" height="50"></span>
+      <span id="OtherImgParent">
+        <img class="img" loading="lazy" altzhtw="其他" alt="other" id="OtherImg" src="/image/icon/black/b_CineTools.png"
+          width="50" height="50">
+        <div id="othereDIv" class="drawer" style="position:absolute;left: 0;white-space:nowrap;z-index: 100;
+           width: 500; display: none;background-color: black;">
+          <span id="clearViewport_span">
+            <img altzhtw="清除視窗" alt="clear viewport" class="innerimg" loading="lazy" id="clearviewportImg"
+              src="/image/icon/black/b_trashcan.png" width="50" height="50">
+          </span> <br>
+          <span id="downloadImg_span">
+            <img altzhtw="下載圖片" alt="download image" class="innerimg" loading="lazy" id="downloadImg"
+              src="/image/icon/black/download_img.png" width="50" height="50">
+          </span> <br>
+          <span id="downloadDcm_span">
+            <img altzhtw="下載DICOM" alt="download DICOM" class="innerimg" loading="lazy" id="downloadDcm"
+              src="/image/icon/black/download_dcm.png" width="50" height="50">
+          </span>
+        </div>
+      </span>
+
+    </span>
+    <span id="rwdImgTag_span"> <img class="img VR MPR XML PEN" alt="RWD" loading="lazy" id="rwdImgTag"
+        src="/image/icon/black/b_CineTools.png" style="display:none;" width="50" height="50"></span>
+    
+    <br>
+    <!--<div id="GraphicStyleDiv" style="background-color:#30306044;display: none;" class="drawer">
+      <label style="color: #ffffff;" id="GraphicColorLabel">Color：</label>
+      <select id="GraphiccolorSelect" style="background-color:#929292;span-weight:bold;span-size:16px;">
+        <! --<option id="Graphicselected" selected="selected">Auto</option> -- >
+        <option id="GraphicBlackSelect" style="color: #000000;span-weight:bold;">Black(T7)</option>
+        <option id="GraphicBlueSelect" style="color: #0000FF;span-weight:bold;" selected="selected">Blue(T8)</option>
+        <option id="GraphicBrownSelect" style="color: #844200;span-weight:bold;">Brown(T9)</option>
+        <option id="GraphicCyanSelect" style="color: #00FFFF;span-weight:bold;">Cyan(T10)</option>
+        <option id="GraphicGreenSelect" style="color: #00FF00;span-weight:bold;">Green(T11)</option>
+        <option id="GraphicMagentaSelect" style="color: #FF00FF;span-weight:bold;">Magenta(T12)</option>
+        <option id="GraphicOrangeSelect" style="color: #FFA500;span-weight:bold;">Orange(L1)</option>
+        <option id="GraphicPurpleSelect" style="color: #663399;span-weight:bold;">Purple(L2)</option>
+        <option id="GraphicRedSelect" style="color: #FF0000;span-weight:bold;">Red(L3)</option>
+        <option id="GraphicYellowSelect" style="color: #FFFF00;span-weight:bold;"> Yellow(L4)</option>
+        <option id="GraphicWhiteSelect" style="color: #FFFFFF;span-weight:bold;">White(L5)</option>
+      </select>
+    </div>-->
+    <div id="MarkStyleDiv" style="background-color:#00306044;" class="drawer">
+      <label style="color: #ffffff;" id="markColorLabel">Color：</label>
+      <select id="MarkcolorSelect">
+        <option id="AutoColorSelect" selected="selected">Auto</option>
+        <option id="WhiteSelect">White</option>
+        <option id="RedSelect">Red</option>
+        <option id="BlueSelect">Blue</option>
+        <option id="GreenSelect">Green</option>
+        <option id="YellowSelect">Yellow</option>
+        <option id="BrownSelect">Brown</option>
+        <option id="OrangeSelect">Orange</option>
+        <option id="PurpleSelect">Purple</option>
+      </select>
+      <label style="color: #ffffff;" id="markAlphaLabel">Alpha<input type="text" id="markAlphaText"
+          value="35" /></label>
+      <label style="color: #ffffff;" id="markSizeLabel">Size<input type="text" id="markSizeText" value="0.45" /></label>
+      <label style="color: #ffffff;" id="markFillLabel">Fill<input type="checkbox" checked="true" name="markFillLabel"
+          id="markFillCheck"></label>
+      <label style="color: #ffffff;" id="TableLabel">Table：</label>
+      <select id="TableSelect">
+        <option id="TableSelectNone" selected="selected">None</option>
+        <option id="DICOMTagsSelect">DICOMTags</option>
+        <option id="AIMSelect">AIM</option>
+      </select>
+      <!--<button id="ExportButton" sytle="">Export Image</button>
+      <button id="ExportButton2" sytle="">Export Dicom</button>-->
+      <!--<button id="remove__ClearMarkupButton__remove" sytle="">Clear Markup</button>-->
+    </div>
+
+    <div id="SplitViewportDiv" style="background-color:#4D000044;" class="drawer">
+      <span color="white">1x1:<input type="radio" class="split_radio" name="split_radio" id="radio_1x1"
+          checked="true" />　</span>
+      <span color="white">1x2:<input type="radio" class="split_radio" name="split_radio" id="radio_1x2" />　</span>
+      <span color="white">2x1:<input type="radio" class="split_radio" name="split_radio" id="radio_2x1" />　</span>
+      <span color="white">2x2:<input type="radio" class="split_radio" name="split_radio" id="radio_2x2" />　</span>
+      <span color="white">3x3:<input type="radio" class="split_radio" name="split_radio" id="radio_3x3" />　</span>
+      <span color="white">4x4:<input type="radio" class="split_radio" name="split_radio" id="radio_4x4" />　</span>
+    </div>
+    <span id="WindowLevelDiv_span">
+      <div id="WindowLevelDiv" style="background-color:#33666644;" class="drawer">
+        <span color="white" id="myWC">WC：</span><input type="text" id="textWC" value="520" />
+        <span color="white" id="myWW">WW：</span><input type="text" id="textWW" value="50" />
+        <!--<select id="WindowLevelSelect">
+          <option id="WindowDefault" selected="selected">Default</option>
+          <option id="WindowCustom">Custom</option>
+          <option class="WindowSelect" id="WindowAbdomen" wc="60" ww="400">Abdomen(60,400)</option>
+          <option class="WindowSelect" id="WindowAngio" wc="300" ww="600">Angio(300,600)</option>
+          <option class="WindowSelect" id="WindowBone" wc="300" ww="1500">Bone(300,1500)</option>
+          <option class="WindowSelect" id="WindowBrain" wc="40" ww="80">Brain(40,80)</option>
+          <option class="WindowSelect" id="WindowChest" wc="40" ww="400">Chest(40,400)</option>
+          <option class="WindowSelect" id="WindowLungs" wc="-400" ww="1500">Lungs(-400,1500)</option>
+        </select>-->
+      </div>
+    </span>
+    <span color="white" class="drawer" id="labelZoom">Zoom：</span><input type="text" class="drawer" id="textZoom"
+      value="200" />
+    <span color="white" class="drawer" id="labelPlay">fps：</span><input type="text" class="drawer" id="textPlay"
+      value="15" />
+    <span id="span_TextAnnotation" style="display: none;">
+      <span color="white" id="label_TextAnnotation">Text：</span><input type="text" id="text_TextAnnotation"
+        value="text" />
+    </span>
+
+    <button type="file" id="myfile" multiple="multiple" style='display:none'> </button>
+  </header>
+  <div class="form-group" id="form-group">
+    <label class="control-label col-sm-1" for="wadoURL">Click on the folder to see the data</label>
+    <div class="container">
+      <div id="LeftPicture"
+        style="overflow-y: auto;display: flex;flex-direction: column;position: absolute;z-index: 9;height:100%-50px;"
+        width="100">
+      </div>
+    </div>
+    <div id="magnifierDiv" style="z-index:40;position: absolute;pointer-events: none;"><canvas
+        id="magnifierCanvas"></canvas>
+        </div>
+      </div>
+</template>
+
+<script setup >
+
+
+useHead({
+  script: [
+
+
+
+        { src: '/scripts/external/other/lodash.min.js', head: true, async: true  },
+
+
+
+        { src: '/scripts/external/cornerstone/cornerstone.min.js', head: true,async: true  },
+        { src: '/scripts/external/cornerstone/dicomParser.js', head: true, async: true },
+        { src: '/scripts/external/cornerstone/dataDictionary.js', head: true, async: true },
+
+        { src: '/scripts/external/cornerstone/cornerstoneWADOImageLoader.bundle.min.js', head: true ,async: true },
+        { src: '/scripts/external/threejs/customWebWorkersConfig.js', body: true ,async: true },
+        { src: '/scripts/external/threejs/initializeWebWorkers.js', body: true ,async: true },
+
+
+        { src: '/scripts/onload.js', head: true },
+        { src: '/scripts/patient.js', head: true },
+        { src: '/scripts/viewport.js', head: true },
+
+
+
+
+
+        { src: '/scripts/toolfunction.js', head: true },
+        { src: '/scripts/gui.js', head: true },
+        //{ src: '/scripts/variable.js', head: true },
+        { src: '/scripts/mark.js', head: true },
+
+        { src: '/scripts/newscript/zoom.js', body: true  ,async: true },
+        { src: '/scripts/eventmanager.js', head: true },
+
+        { src: '/scripts/plugin/table.js', head: true,async: true  },
+
+
+        { src: '/scripts/viewer.js', head: true },
+        { src: '/scripts/common.js', head: true},
+        { src: '/scripts/other.js', head: true },
+        { src: '/scripts/readsome.js', head: true },
+
+        { src: '/scripts/label.js', head: true },
+        { src: '/scripts/mtss.js', head: true },
+        { src: '/scripts/cine.js', body: true, async: true  },
+        { src: '/scripts/html.js', head: true },
+        { src: '/scripts/newscript/mousetool.js', head: true },
+        { src: '/scripts/plugin/plugin.js', head: true },
+        { src: '/scripts/newscript/scroll.js', body: true, async: true },
+        { src: '/scripts/newscript/windowlevel.js', head: true , async: true},
+        { src: '/scripts/newscript/rotate.js', head: true,async: true  },
+
+        { src: '/scripts/newscript/measure.js', head: true, async: true },
+        { src: '/scripts/newscript/angle.js', head: true , async: true},
+        { src: '/scripts/newscript/shape.js', head: true , async: true},
+        { src: '/scripts/newscript/irregular.js', head: true, async: true },
+
+        {head: true, type:'module', children:`
+        import { decodeImageFrame1 } from "/scripts/external/cornerstone/decode/decodeImageFrame.js";
+      decodeImageFrame = decodeImageFrame1;
+    ` },
+
+
+
+     
+
+        ],
+        link: [
+    { head: true,rel: 'stylesheet', type: 'text/css', href: '/css/vr.css'},
+  ],
+  bodyAttrs: {
+    style : 'background-color:#000000;',
+    onmousewheel:"/*return false;*/"
+    }
+})
+
+
+
+
+
+</script>
+
+
+<style>
+body,
+html {
+  /*margin: 0;
+    padding: 0;*/
+  overflow: hidden;
+}
+
+.container {
+  height: 100%;
+  position: relative;
+  overflow-y: hidden;
+}
+
+#LeftPicture {
+  height: 100%;
+  overflow-y: auto;
+}
+
+select,
+button,
+input {
+  background-color: #404048;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  padding: 4px;
+  border: 2px solid #555;
+}
+
+button:hover {
+  filter: invert(80%);
+}
+
+.img {
+  flex: 0 0 4.0%;
+  max-width: calc(min(4.0%, 50px));
+  min-width: 35px;
+  width: 100%;
+  height: 100%;
+}
+
+.img:active:hover {
+  filter: invert(80%);
+}
+
+.img:hover {
+  filter: invert(80%);
+}
+
+#WindowRevision {
+  max-width: calc(min(4.0%, 38px));
+  min-width: 27px;
+  width: 100%;
+  height: 100%;
+}
+
+#WindowRevisionOption {
+  max-width: calc(min(1.0%, 13px));
+  min-width: 9px;
+  width: 100%;
+  height: 100%;
+}
+
+.cropimg:active:hover {
+  filter: invert(80%);
+}
+
+.cropimg:hover {
+  filter: invert(80%);
+}
+
+.innerimg:active:hover {
+  filter: invert(80%);
+}
+
+.innerimg:hover {
+  filter: invert(80%);
+}
+
+.innerLabel {
+  span-size: calc(0.4rem + 0.1*((5vw)));
+}
+
+.DicomCanvas {
+  top: 50%;
+  left: 50%;
+}
+
+.MarkCanvas {
+  top: 50%;
+  left: 50%;
+}
+
+.leftRule {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.downRule {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.WindowSelect {
+  background-color: rgb(105, 105, 105);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  color: white;
+  width: 150px;
+  height: 30px;
+
+  border-color: rgb(55, 55, 55);
+  border-width: 2px;
+  border-style: solid;
+}
+
+.WindowSelect:hover {
+  background-color: rgb(190, 175, 175);
+  color: rgb(40, 25, 25);
+}
+
+#WindowRevisionParent {
+  width: 50px;
+  overflow: hidden;
+}
+
+.activeImg {
+  border: dashed white;
+}
+
+.activeImg:hover {
+  border: dashed black;
+}
+</style>
+<style>
+#LeftPicture {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 9;
+}
+
+.filpx {
+  transform: scaleX(-1);
+}
+</style>
